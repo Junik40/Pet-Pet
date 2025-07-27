@@ -11,11 +11,11 @@ import (
 var db *sql.DB
 
 type InfUnit struct{
-	ServiceName string
-	Price int
-	UserId string
-	StartDate string
-	EndDate string
+	ServiceName string `json:"ServiceName"`
+	Price int	`json:"Price"`
+	UserId string `json:"UserId"`
+	StartDate string `json:"StartDate"`
+	EndDate string `json:"EndDate"`
 }
 
 func CreateDB() {

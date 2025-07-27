@@ -1,25 +1,35 @@
 package server
 
-import(
-	"net/http"
+import (
 	data "Pet-Pet/internal/database"
-	"github.com/gorilla/mux"
+	"net/http"
 )
 
 func Gets(w http.ResponseWriter, r *http.Request){
-	Output := data.GetDB()
-	Out(Output, w, http.StatusOK)
+	id := r.URL.Query().Get("userId")
+	serviceName := r.URL.Query().Get("serviceName")
+	if id == "" && serviceName == "" {
+		Output := data.GetAllDB()
+		Out(Output, w, http.StatusOK)
+		return
+	}
+	if id != "" && serviceName == "" {
+		Output := data.GetUuidDB(id)
+		Out(Output, w, http.StatusOK)
+		return
+	}
+	if id == "" && serviceName != "" {
+		Output := data.GetServiceNameDB(serviceName)
+		Out(Output, w, http.StatusOK)
+		return
+	}
+	if id != "" && serviceName != "" {
+		Output := data.GetIdServiceNameDB(id, serviceName)
+		Out(Output, w, http.StatusOK)
+		return
+	}
+}
+func Get(w http.ResponseWriter, r *http.Request) {
+
 }
 
-func GetId(w http.ResponseWriter, r *http.Request){
-	vars := mux.Vars(r)
-	id := vars["id"]
-	Output := data.GetIdDB(id)
-	Out(Output, w, http.StatusOK)
-}
-func GetSeviceName(w http.ResponseWriter, r *http.Request){
-	vars := mux.Vars(r)
-	name := vars["ServiceName"]
-	Output := data.GetServiceNameDB(name)
-	Out(Output, w, http.StatusOK)
-}

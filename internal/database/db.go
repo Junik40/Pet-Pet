@@ -11,6 +11,7 @@ import (
 var db *sql.DB
 
 type InfUnit struct{
+	ID int `json:"ID"`
 	ServiceName string `json:"ServiceName"`
 	Price int	`json:"Price"`
 	UserId string `json:"UserId"`
@@ -30,7 +31,7 @@ func CreateDB() {
 	}
 
 	
-	res, err := db.Exec("CREATE TABLE IF NOT EXISTS InfUnit (ServiceName VARCHAR(256), Price INTEGER, UserId VARCHAR(256) , StartDate CHAR(7), EndDate CHAR(7))")
+	res, err := db.Exec("CREATE TABLE IF NOT EXISTS InfUnit (ID SERIAL PRIMARY KEY, ServiceName VARCHAR(256), Price INTEGER, UserId VARCHAR(256) , StartDate CHAR(7), EndDate CHAR(7))")
 	if err != nil {
 		fmt.Println(err)
 		panic(err)

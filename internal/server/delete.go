@@ -7,7 +7,7 @@ import(
 )
 
 func Delete( w http.ResponseWriter, r *http.Request) {
-	id := r.URL.Query().Get("userId")
+	id := r.URL.Query().Get("ID")
 	if id == "" {
 		Out(nil, w, http.StatusBadRequest)
 		return
@@ -18,5 +18,15 @@ func Delete( w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	database.DeleteDB(idInt)
-	Out(nil, w, http.StatusOK)
+	Out("All Good", w, http.StatusOK)
+}
+
+func DeleteUuid( w http.ResponseWriter, r *http.Request) {
+	id := r.URL.Query().Get("userId")
+	if id == "" {
+		Out(nil, w, http.StatusBadRequest)
+		return
+	}
+	database.DeleteUuidDB(id)
+	Out("All Good", w, http.StatusOK)
 }

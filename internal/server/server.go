@@ -22,6 +22,8 @@ func Init(){
 	router.HandleFunc("/infunits", Gets).Methods("GET")
 	router.HandleFunc("/infunit", Post).Methods("POST")
 	router.HandleFunc("/infunit", Delete).Methods("DELETE")
+	router.HandleFunc("/infunit/user", DeleteUuid).Methods("DELETE")
+	router.HandleFunc("/infunit", Put).Methods("PUT")
 	http.ListenAndServe(":8080", router)
 
 }

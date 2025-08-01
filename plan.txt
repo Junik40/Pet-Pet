@@ -10,14 +10,20 @@
 
 
 endpoint:
-    1. GET 
-    2. POST
-    3. PUT
+    1. GET +
+    2. POST+
+    3. PUT + 
     4. PATCH
-    5. DELETE
-    6. GET с фильтрами
-    7. DELETE с фильтрами
-    8. PATCH с фильтрами
+    5. DELETE +
+    6. GET с фильтрами +
+    7. DELETE с фильтрами +
 
 Важно
-    Подумать над Put и DELETE (надо ли там фильровать по id и Servicename)
+    Подумать над Put и DELETE (надо ли там фильровать по id и Servicename)+
+
+
+ПЛАН: 
+    1. Доделать все endpoint + 
+    2. Сделать документацию
+    3. Прочитать как работает Redis
+    4. Понять как работает Docker и сделать образ

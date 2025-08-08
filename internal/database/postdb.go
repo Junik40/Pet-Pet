@@ -1,12 +1,11 @@
 package database
 
 import (
-	"database/sql"
 	"fmt"
 	_ "github.com/lib/pq"
 )
 func PostDB(unit InfUnit){
-	db,err := sql.Open("postgres","user=postgres password=123456 dbname=postgres sslmode=disable")
+	db,err := Open()
 	if err != nil {
 		panic(err)
 	}

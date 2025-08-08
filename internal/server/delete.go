@@ -7,7 +7,7 @@ import(
 )
 
 func Delete( w http.ResponseWriter, r *http.Request) {
-	id := r.URL.Query().Get("ID")
+	id := r.URL.Query().Get("userId")
 	if id == "" {
 		Out(nil, w, http.StatusBadRequest)
 		return

@@ -1,14 +1,13 @@
 package database
 
 import (
-	"database/sql"
+	
 	"fmt"
-
 	_ "github.com/lib/pq"
 )
 
 func GetOneDB(id string) InfUnit {
-db, err := sql.Open("postgres", "user=postgres password=123456 dbname=postgres sslmode=disable")
+	db,err := Open()
 	if err != nil {
 		panic(err)
 	}
@@ -30,7 +29,7 @@ db, err := sql.Open("postgres", "user=postgres password=123456 dbname=postgres s
 }
 
 func GetAllDB() []InfUnit {
-	db, err := sql.Open("postgres", "user=postgres password=123456 dbname=postgres sslmode=disable")
+	db,err := Open()
 	if err != nil {
 		panic(err)
 	}
@@ -54,7 +53,7 @@ func GetAllDB() []InfUnit {
 }
 
 func GetUuidDB(id string) []InfUnit {
-	db, err := sql.Open("postgres", "user=postgres password=123456 dbname=postgres sslmode=disable")
+	db,err := Open()
 	if err != nil {
 		panic(err)
 	}
@@ -80,7 +79,7 @@ func GetUuidDB(id string) []InfUnit {
 }
 
 func GetServiceNameDB(name string) []InfUnit {
-	db, err := sql.Open("postgres", "user=postgres password=123456 dbname=postgres sslmode=disable")
+	db,err := Open()
 	if err != nil {
 		panic(err)
 	}
@@ -105,7 +104,7 @@ func GetServiceNameDB(name string) []InfUnit {
 }
 
 func GetIdServiceNameDB(id string, name string) []InfUnit {
-	db, err := sql.Open("postgres", "user=postgres password=123456 dbname=postgres sslmode=disable")
+	db,err := Open()
 	if err != nil {
 		panic(err)
 	}

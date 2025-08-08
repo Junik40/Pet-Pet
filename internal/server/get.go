@@ -29,7 +29,17 @@ func Gets(w http.ResponseWriter, r *http.Request){
 		return
 	}
 }
-func Get(w http.ResponseWriter, r *http.Request) {
-
+func Money(w http.ResponseWriter, r *http.Request){
+	id := r.URL.Query().Get("userId")
+	if id == "" {
+		Out(nil, w, http.StatusBadRequest)
+		return
+	}
+	Output, err := data.MoneyDB(id)
+	if err != nil {
+		Out(nil, w, http.StatusBadRequest)
+		return
+	}
+	Out(Output, w, http.StatusOK)
 }
 
